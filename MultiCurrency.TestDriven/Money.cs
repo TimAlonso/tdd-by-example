@@ -2,12 +2,11 @@
 {
     public class Money : IExpression
     {
-        private readonly int _amount;
         private readonly string _currency;
 
         public Money(int amount, string currency)
         {
-            _amount = amount;
+            Amount = amount;
             _currency = currency;
         }
         
@@ -16,14 +15,16 @@
             return _currency;
         }
 
+        public int Amount { get; set; }
+
         public IExpression Plus(Money addend)
         {
-            return new Money(_amount + addend._amount, _currency);
+            return new Sum(this, addend);
         }
 
         public Money Times(int multiplier)
         {
-            return new Money(_amount * multiplier, _currency);
+            return new Money(Amount * multiplier, _currency);
         }
 
         public static Money Dollar(int amount)
@@ -39,13 +40,13 @@
         public override bool Equals(object obj)
         {
             var money = (Money)obj;
-            return _amount == money._amount && 
+            return Amount == money.Amount && 
                    _currency.Equals(money.Currency());
         }
 
         public override string ToString()
         {
-            return _amount + " " + _currency;
+            return Amount + " " + _currency;
         }
     }
 
@@ -53,11 +54,25 @@
     {
     }
 
+    public class Sum : IExpression
+    {
+        public Sum(Money augend, Money addend)
+        {
+            Augend = augend;
+            Addend = addend;
+        }
+
+        public Money Augend;
+        public Money Addend;
+    }
+
     public class Bank
     {
         public Money Reduce(IExpression source, string to)
         {
-            return Money.Dollar(10);
+            Sum sum = (Sum) source;
+            int amount = sum.Augend.Amount + sum.Addend.Amount;
+            return new Money(amount, to);
         }
     }
 }
