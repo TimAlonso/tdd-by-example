@@ -14,5 +14,12 @@ namespace MultiCurrency.TestDriven.Tests
             product = five.Times(3);
             Assert.That(product._amount, Is.EqualTo(15));
         }
+
+        [Test]
+        public void TestEquality()
+        {
+            Assert.That(new Dollar(5).Equals(new Dollar(5)), Is.True);
+            Assert.That(new Dollar(5).Equals(new Dollar(6)), Is.False);
+        }
     }
 }
