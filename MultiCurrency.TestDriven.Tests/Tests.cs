@@ -27,6 +27,7 @@ namespace MultiCurrency.TestDriven.Tests
             Assert.That(new Dollar(5).Equals(new Dollar(6)), Is.False);
             Assert.That(new Franc(5).Equals(new Franc(5)), Is.True);
             Assert.That(new Franc(5).Equals(new Franc(6)), Is.False);
+            Assert.That(new Dollar(5).Equals(new Franc(5)), Is.False);
         }
     }
 }
