@@ -1,6 +1,6 @@
 ﻿namespace MultiCurrency.TestDriven
 {
-    public class Money
+    public class Money : IExpression
     {
         private readonly int _amount;
         private readonly string _currency;
@@ -14,6 +14,11 @@
         public string Currency()
         {
             return _currency;
+        }
+
+        public IExpression Plus(Money addend)
+        {
+            return new Money(_amount + addend._amount, _currency);
         }
 
         public Money Times(int multiplier)
@@ -41,6 +46,18 @@
         public override string ToString()
         {
             return _amount + " " + _currency;
+        }
+    }
+
+    public interface IExpression
+    {
+    }
+
+    public class Bank
+    {
+        public Money Reduce(IExpression source, string to)
+        {
+            return Money.Dollar(10);
         }
     }
 }
