@@ -13,6 +13,14 @@ namespace MultiCurrency.TestDriven.Tests
         }
 
         [Test]
+        public void TestFrancMultiplication()
+        {
+            Franc five = new Franc(5);
+            Assert.That(five.Times(2), Is.EqualTo(new Franc(10)));
+            Assert.That(five.Times(3), Is.EqualTo(new Franc(15)));
+        }
+
+        [Test]
         public void TestEquality()
         {
             Assert.That(new Dollar(5).Equals(new Dollar(5)), Is.True);
