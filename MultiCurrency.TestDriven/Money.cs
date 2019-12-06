@@ -22,6 +22,11 @@
             return new Sum(this, addend);
         }
 
+        public Money Reduce(string to)
+        {
+            return this;
+        }
+
         public Money Times(int multiplier)
         {
             return new Money(Amount * multiplier, _currency);
@@ -52,6 +57,7 @@
 
     public interface IExpression
     {
+        Money Reduce(string to);
     }
 
     public class Sum : IExpression
@@ -76,13 +82,7 @@
     {
         public Money Reduce(IExpression source, string to)
         {
-            if (source is Money money)
-            {
-                return money;
-            }
-
-            Sum sum = (Sum) source;
-            return sum.Reduce(to);
+            return source.Reduce(to);
         }
     }
 }
