@@ -29,5 +29,12 @@ namespace MultiCurrency.TestDriven.Tests
             Assert.That(Money.Franc(5).Equals(Money.Franc(6)), Is.False);
             Assert.That(Money.Dollar(5).Equals(Money.Franc(5)), Is.False);
         }
+
+        [Test]
+        public void TestCurrencies()
+        {
+            Assert.That(Money.Dollar(1).Currency(), Is.EqualTo("USD"));
+            Assert.That(Money.Franc(1).Currency(), Is.EqualTo("CHF"));
+        }
     }
 }
