@@ -8,8 +8,11 @@ namespace MultiCurrency.TestDriven.Tests
         public void TestMultiplication()
         {
             Dollar five = new Dollar(5);
-            five.Times(2);
-            Assert.That(five._amount, Is.EqualTo(10));
+            Dollar product = five.Times(2);
+            Assert.That(product._amount, Is.EqualTo(10));
+            
+            product = five.Times(3);
+            Assert.That(product._amount, Is.EqualTo(15));
         }
     }
 }

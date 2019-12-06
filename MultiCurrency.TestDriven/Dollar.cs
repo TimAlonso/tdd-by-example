@@ -11,9 +11,9 @@ namespace MultiCurrency.TestDriven
             _amount = amount;
         }
 
-        public void Times(int multiplier)
+        public Dollar Times(int multiplier)
         {
-            _amount *= multiplier;
+            return new Dollar(_amount * multiplier);
         }
     }
 }
