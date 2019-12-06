@@ -62,17 +62,27 @@
             Addend = addend;
         }
 
-        public Money Augend;
-        public Money Addend;
+        public Money Augend { get; set; }
+        public Money Addend { get; set; }
+
+        public Money Reduce(string to)
+        {
+            int amount = Augend.Amount + Addend.Amount;
+            return new Money(amount, to);
+        }
     }
 
     public class Bank
     {
         public Money Reduce(IExpression source, string to)
         {
+            if (source is Money money)
+            {
+                return money;
+            }
+
             Sum sum = (Sum) source;
-            int amount = sum.Augend.Amount + sum.Addend.Amount;
-            return new Money(amount, to);
+            return sum.Reduce(to);
         }
     }
 }

@@ -55,5 +55,13 @@ namespace MultiCurrency.TestDriven.Tests
             Money result = bank.Reduce(sum, "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(7)));
         }
+
+        [Test]
+        public void TestReduceMoney()
+        {
+            Bank bank = new Bank();
+            Money result = bank.Reduce(Money.Dollar(1), "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(1)));
+        }
     }
 }
