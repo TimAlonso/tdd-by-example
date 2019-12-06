@@ -2,12 +2,12 @@
 {
     public class Money
     {
-        protected int Amount;
-        protected string _currency;
+        private readonly int _amount;
+        private readonly string _currency;
 
         public Money(int amount, string currency)
         {
-            Amount = amount;
+            _amount = amount;
             _currency = currency;
         }
         
@@ -18,7 +18,7 @@
 
         public Money Times(int multiplier)
         {
-            return new Money(Amount * multiplier, _currency);
+            return new Money(_amount * multiplier, _currency);
         }
 
         public static Money Dollar(int amount)
@@ -34,13 +34,13 @@
         public override bool Equals(object obj)
         {
             var money = (Money)obj;
-            return Amount == money.Amount && 
+            return _amount == money._amount && 
                    _currency.Equals(money.Currency());
         }
 
         public override string ToString()
         {
-            return Amount + " " + _currency;
+            return _amount + " " + _currency;
         }
     }
 }
