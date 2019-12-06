@@ -4,7 +4,7 @@ namespace MultiCurrency.TestDriven
 {
     public class Dollar
     {
-        public int _amount;
+        private int _amount;
 
         public Dollar(int amount)
         {
