@@ -54,35 +54,4 @@
             return Amount + " " + _currency;
         }
     }
-
-    public interface IExpression
-    {
-        Money Reduce(string to);
-    }
-
-    public class Sum : IExpression
-    {
-        public Sum(Money augend, Money addend)
-        {
-            Augend = augend;
-            Addend = addend;
-        }
-
-        public Money Augend { get; set; }
-        public Money Addend { get; set; }
-
-        public Money Reduce(string to)
-        {
-            int amount = Augend.Amount + Addend.Amount;
-            return new Money(amount, to);
-        }
-    }
-
-    public class Bank
-    {
-        public Money Reduce(IExpression source, string to)
-        {
-            return source.Reduce(to);
-        }
-    }
 }
