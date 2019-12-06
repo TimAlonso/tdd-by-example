@@ -21,14 +21,14 @@
             return new Money(Amount * multiplier, _currency);
         }
 
-        public static Dollar Dollar(int amount)
+        public static Money Dollar(int amount)
         {
-            return new Dollar(amount, "USD");
+            return new Money(amount, "USD");
         }
 
-        public static Franc Franc(int amount)
+        public static Money Franc(int amount)
         {
-            return new Franc(amount, "CHF");
+            return new Money(amount, "CHF");
         }
 
         public override bool Equals(object obj)
