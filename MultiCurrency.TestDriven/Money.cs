@@ -1,16 +1,25 @@
 ﻿namespace MultiCurrency.TestDriven
 {
-    public abstract class Money
+    public class Money
     {
         protected int Amount;
         protected string _currency;
 
+        public Money(int amount, string currency)
+        {
+            Amount = amount;
+            _currency = currency;
+        }
+        
         public string Currency()
         {
             return _currency;
         }
 
-        public abstract Money Times(int multiplier);
+        public Money Times(int multiplier)
+        {
+            return new Money(Amount * multiplier, _currency);
+        }
 
         public static Dollar Dollar(int amount)
         {
@@ -26,7 +35,12 @@
         {
             var money = (Money)obj;
             return Amount == money.Amount && 
-                   GetType() == money.GetType();
+                   _currency.Equals(money.Currency());
+        }
+
+        public override string ToString()
+        {
+            return Amount + " " + _currency;
         }
     }
 }
