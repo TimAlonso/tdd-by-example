@@ -2,45 +2,40 @@
 
 namespace MultiCurrency.TestDriven
 {
-    public class Dollar
+    public class Money
     {
-        private int _amount;
+        public int Amount;
 
+        public override bool Equals(object obj)
+        {
+            Money money = (Money)obj;
+            return Amount == money.Amount;
+        }
+    }
+
+    public class Dollar : Money
+    {
         public Dollar(int amount)
         {
-            _amount = amount;
+            Amount = amount;
         }
 
         public Dollar Times(int multiplier)
         {
-            return new Dollar(_amount * multiplier);
-        }
-
-        public override bool Equals(object obj)
-        {
-            Dollar dollar = (Dollar) obj;
-            return _amount == dollar._amount;
+            return new Dollar(Amount * multiplier);
         }
     }
 
-    public class Franc
+    public class Franc : Money
     {
-        private int _amount;
-
         public Franc(int amount)
         {
-            _amount = amount;
+            Amount = amount;
         }
 
         public Franc Times(int multiplier)
         {
-            return new Franc(_amount * multiplier);
-        }
-
-        public override bool Equals(object obj)
-        {
-            Franc dollar = (Franc)obj;
-            return _amount == dollar._amount;
+            return new Franc(Amount * multiplier);
         }
     }
 }
