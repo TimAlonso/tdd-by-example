@@ -6,7 +6,7 @@
 
         public override bool Equals(object obj)
         {
-            Money money = (Money)obj;
+            var money = (Money)obj;
             return Amount == money.Amount && 
                    GetType() == money.GetType();
         }

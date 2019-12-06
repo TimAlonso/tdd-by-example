@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MultiCurrency.TestDriven
+﻿namespace MultiCurrency.TestDriven
 {
     public class Dollar : Money
     {
