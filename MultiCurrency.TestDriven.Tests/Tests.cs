@@ -23,8 +23,8 @@ namespace MultiCurrency.TestDriven.Tests
         [Test]
         public void TestCurrencies()
         {
-            Assert.That(Money.Dollar(1).Currency(), Is.EqualTo("USD"));
-            Assert.That(Money.Franc(1).Currency(), Is.EqualTo("CHF"));
+            Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
+            Assert.That(Money.Franc(1).Currency, Is.EqualTo("CHF"));
         }
 
         [Test]
