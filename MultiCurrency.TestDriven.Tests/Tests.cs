@@ -30,19 +30,19 @@ namespace MultiCurrency.TestDriven.Tests
         [Test]
         public void TestSimpleAddition()
         {
-            Money five = Money.Dollar(5);
-            IExpression sum = five.Plus(five);
-            Bank bank = new Bank();
-            Money reduced = bank.Reduce(sum, "USD");
+            var five = Money.Dollar(5);
+            var sum = five.Plus(five);
+            var bank = new Bank();
+            var reduced = bank.Reduce(sum, "USD");
             Assert.That(reduced, Is.EqualTo(Money.Dollar(10)));
         }
         
         [Test]
         public void TestPlusReturnsSum()
         {
-            Money five = Money.Dollar(5);
-            IExpression result = five.Plus(five);
-            Sum sum = (Sum) result;
+            var five = Money.Dollar(5);
+            var result = five.Plus(five);
+            var sum = (Sum) result;
             Assert.That(sum.Augend, Is.EqualTo(five));
             Assert.That(sum.Addend, Is.EqualTo(five));
         }
@@ -51,16 +51,16 @@ namespace MultiCurrency.TestDriven.Tests
         public void TestReducedSum()
         {
             IExpression sum = new Sum(Money.Dollar(3), Money.Dollar(4));
-            Bank bank = new Bank();
-            Money result = bank.Reduce(sum, "USD");
+            var bank = new Bank();
+            var result = bank.Reduce(sum, "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(7)));
         }
 
         [Test]
         public void TestReduceMoney()
         {
-            Bank bank = new Bank();
-            Money result = bank.Reduce(Money.Dollar(1), "USD");
+            var bank = new Bank();
+            var result = bank.Reduce(Money.Dollar(1), "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(1)));
         }
     }
