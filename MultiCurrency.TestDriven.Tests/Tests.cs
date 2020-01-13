@@ -63,5 +63,20 @@ namespace MultiCurrency.TestDriven.Tests
             var result = bank.Reduce(Money.Dollar(1), "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(1)));
         }
+
+        [Test]
+        public void TestReduceMoneyDifferentCurrency()
+        {
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            var result = bank.Reduce(Money.Franc(2), "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(1)));
+        }
+
+        [Test]
+        public void TestIdentityRate()
+        {
+            Assert.That(new Bank().Rate("USD", "USD"), Is.EqualTo(1));
+        }
     }
 }
