@@ -121,5 +121,12 @@ namespace MultiCurrency.TestDriven.Tests
 
             Assert.That(result, Is.EqualTo(Money.Dollar(20)));
         }
+
+        [Test]
+        public void TestPlusSameCurrencyReturnsMoney()
+        {
+            IExpression sum = Money.Dollar(1).Plus(Money.Dollar(1));
+            Assert.That(sum, Is.InstanceOf<Money>());
+        }
     }
 }
