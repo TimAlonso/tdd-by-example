@@ -78,5 +78,18 @@ namespace MultiCurrency.TestDriven.Tests
         {
             Assert.That(new Bank().Rate("USD", "USD"), Is.EqualTo(1));
         }
+
+        [Test]
+        public void TestMixedAddition()
+        {
+            Money fiveBucks = Money.Dollar(5);
+            Money tenFrancs = Money.Franc(10);
+
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+
+            Money result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
+            Assert.That(result, Is.EqualTo(Money.Dollar(10)));
+        }
     }
 }
