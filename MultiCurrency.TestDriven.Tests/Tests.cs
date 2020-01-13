@@ -91,5 +91,20 @@ namespace MultiCurrency.TestDriven.Tests
             Money result = bank.Reduce(fiveBucks.Plus(tenFrancs), "USD");
             Assert.That(result, Is.EqualTo(Money.Dollar(10)));
         }
+
+        [Test]
+        public void TestSumPlusMoney()
+        {
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+
+            IExpression sum = new Sum(fiveBucks, tenFrancs).Plus(fiveBucks);
+            Money result = bank.Reduce(sum, "USD");
+
+            Assert.That(result, Is.EqualTo(Money.Dollar(15)));
+        }
     }
 }
