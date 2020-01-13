@@ -12,7 +12,7 @@
 
         public int Amount { get; set; }
 
-        public IExpression Plus(Money addend)
+        public IExpression Plus(IExpression addend)
         {
             return new Sum(this, addend);
         }
@@ -23,7 +23,7 @@
             return new Money(Amount / rate, to);
         }
 
-        public Money Times(int multiplier)
+        public IExpression Times(int multiplier)
         {
             return new Money(Amount * multiplier, Currency);
         }

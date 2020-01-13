@@ -82,8 +82,8 @@ namespace MultiCurrency.TestDriven.Tests
         [Test]
         public void TestMixedAddition()
         {
-            Money fiveBucks = Money.Dollar(5);
-            Money tenFrancs = Money.Franc(10);
+            IExpression fiveBucks = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
 
             var bank = new Bank();
             bank.AddRate("CHF", "USD", 2);
