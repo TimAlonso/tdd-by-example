@@ -21,5 +21,10 @@
         {
             return new Sum(this, addend);
         }
+
+        public IExpression Times(int multiplier)
+        {
+            return new Sum(Augend.Times(multiplier), Addend.Times(multiplier));
+        }
     }
 }
