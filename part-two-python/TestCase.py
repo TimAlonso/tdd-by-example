@@ -5,3 +5,6 @@ class TestCase:
     def run(self):
         method = getattr(self, self.name)
         method()
+    
+    def testMethod(self):
+        self.wasRun = 1
