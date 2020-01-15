@@ -5,8 +5,7 @@ class TestCase:
     def setUp(self):
         pass
 
-    def run(self, result):
-        result.testStarted()
+    def run(self):
         self.setUp()
         method = getattr(self, self.name)
         method()
