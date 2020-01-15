@@ -5,7 +5,6 @@ from WasRun import WasRun
 class test_TestCase(unittest.TestCase):
     def testRunning(self):
         test = WasRun("testMethod")
-        self.assertEqual(test.wasRun, None)
         test.run()
         self.assertEqual(test.wasRun, 1)
     
