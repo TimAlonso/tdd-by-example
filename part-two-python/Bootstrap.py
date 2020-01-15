@@ -5,22 +5,28 @@ class TestCase:
     def setUp(self):
         pass
 
-    def run(self):
+    def run(self, result):
+        result.testStarted()
         self.setUp()
         method = getattr(self, self.name)
         method()
+        self.tearDown()
+
+    def tearDown(self):
+        pass
 
 class WasRun(TestCase):
     def __init__(self, name):
         TestCase.__init__(self, name)
 
-    def testMethod(self):
-        self.wasRun = 1
-        self.log = self.log + "testMethod "
-
     def setUp(self):
-        self.wasRun = None
         self.log = "setUp "
+
+    def testMethod(self):
+        self.log = self.log + "testMethod "
+    
+    def tearDown(self):
+        self.log = self.log + "tearDown "
 
 class TestCaseTest(TestCase):
     def testTemplateMethod(self):
