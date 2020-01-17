@@ -7,8 +7,8 @@ class TestCase:
 
     def run(self, result):
         result.testStarted()
-        self.setUp()
-        try:    
+        try:
+            self.setUp()    
             method = getattr(self, self.name)
             method()
         except:
