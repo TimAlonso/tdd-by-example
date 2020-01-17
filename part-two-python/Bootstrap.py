@@ -34,18 +34,12 @@ class WasRun(TestCase):
     def tearDown(self):
         self.log = self.log + "tearDown "
 
-class WasSetUp(TestCase):
+class WasSetUp(WasRun):
     def __init__(self, name):
-        TestCase.__init__(self, name)
+        WasRun.__init__(self, name)
 
     def setUp(self):
         raise Exception
-
-    def testMethod(self):
-        self.log = self.log + "testMethod "
-    
-    def tearDown(self):
-        self.log = self.log + "tearDown "
 
 class TestResult:
     def __init__(self):
