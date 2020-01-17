@@ -9,4 +9,4 @@ todo:
 - ~~log string in WasRun~~
 - ~~report failed tests~~
 - ~~catch and report setUp errors~~
-- create testsuite from a testcase class
+- ~~create testsuite from a testcase class~~
