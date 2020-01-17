@@ -122,6 +122,10 @@ class TestCaseTest(TestCase):
         suite.run(self.result)
         assert("2 run, 1 failed" == self.result.summary())
 
+    def testSuiteFromTestCase(self):
+        suite = TestCase().create()
+        suite.run(self.result)
+        assert("0 run, 0 failed" == self.result.summary())
 
 suite = TestSuite()
 suite.add(TestCaseTest("testTemplateMethod"))
