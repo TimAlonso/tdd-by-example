@@ -8,5 +8,5 @@ todo:
 - ~~report collected results~~
 - ~~log string in WasRun~~
 - ~~report failed tests~~
-- catch and report setUp errors
-- create testsuite frin a testcase class
+- ~~catch and report setUp errors~~
+- create testsuite from a testcase class

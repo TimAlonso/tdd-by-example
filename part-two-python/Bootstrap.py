@@ -7,7 +7,10 @@ class TestCase:
 
     def run(self, result):
         result.testStarted()
-        self.setUp()
+        try:
+            self.setUp()
+        except:
+            result.setUpFailed()
         try:
             method = getattr(self, self.name)
             method()
@@ -46,11 +49,18 @@ class WasSetUp(WasRun):
 
 class TestResult:
     def __init__(self):
+        self.setUpErrorCount = 0
         self.runCount = 0
         self.errorCount = 0
 
     def summary(self):
-        return "%d run, %d failed" % (self.runCount, self.errorCount)
+        if (self.setUpErrorCount > 0):
+            return "setUp error"
+        else:
+            return "%d run, %d failed" % (self.runCount, self.errorCount)
+
+    def setUpFailed(self):
+        self.setUpErrorCount = self.setUpErrorCount + 1
 
     def testStarted(self):
         self.runCount = self.runCount + 1
