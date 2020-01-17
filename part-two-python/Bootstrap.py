@@ -21,6 +21,13 @@ class TestCase:
     def tearDown(self):
         pass
 
+    def create(self):
+        suite = TestSuite()
+        for method in dir(self):
+            if callable(getattr(self, method)) and method.startswith("test"):
+                suite.tests.append(TestCaseTest(method))
+        return suite
+
 
 class WasRun(TestCase):
     def __init__(self, name = None):
