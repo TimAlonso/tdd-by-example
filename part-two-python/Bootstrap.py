@@ -75,6 +75,10 @@ class TestCaseTest(TestCase):
     def setUp(self):
         self.result = TestResult()
 
+    def testFailedSetUp(self):
+        self.result.setUpFailed()
+        assert("setUp error" == self.result.summary())
+
     def testTemplateMethod(self):
         test = WasRun("testMethod")
         test.run(self.result)
@@ -109,6 +113,7 @@ suite.add(TestCaseTest("testResult"))
 suite.add(TestCaseTest("testFailedResult"))
 suite.add(TestCaseTest("testFailedResultFormatting"))
 suite.add(TestCaseTest("testSuite"))
+suite.add(TestCaseTest("testFailedSetUp"))
 result = TestResult()
 suite.run(result)
 print(result.summary())
