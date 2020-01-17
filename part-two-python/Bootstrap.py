@@ -1,5 +1,5 @@
 class TestCase:
-    def __init__(self, name):
+    def __init__(self, name = None):
         self.name = name
 
     def setUp(self):
@@ -23,7 +23,7 @@ class TestCase:
 
 
 class WasRun(TestCase):
-    def __init__(self, name):
+    def __init__(self, name = None):
         TestCase.__init__(self, name)
 
     def setUp(self):
@@ -41,7 +41,7 @@ class WasRun(TestCase):
 
 
 class WasSetUp(WasRun):
-    def __init__(self, name):
+    def __init__(self, name = None):
         WasRun.__init__(self, name)
 
     def setUp(self):
